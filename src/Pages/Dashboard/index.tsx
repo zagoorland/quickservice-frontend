@@ -2,9 +2,11 @@ import React from "react";
 import SectionContainer from "../../components/SectionContainer";
 import Activities from "./Activities";
 import styled from "styled-components";
+import Card from "./Card";
 
 const Container = styled.main`
   display: flex;
+  flex-direction: column;
   width: 100%;
   padding: 20px;
 `;
@@ -20,6 +22,7 @@ const Dashboard = () => {
     <SectionContainer>
       <Container>
         <Topbar>welcome</Topbar>
+        <Card />
       </Container>
       <Activities />
     </SectionContainer>
