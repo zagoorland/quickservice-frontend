@@ -12,8 +12,13 @@ interface IPush {
 }
 
 const Push = ({ content }: IPush) => {
-  console.log(content.userName);
-  return <Container>{content.userName}</Container>;
+  console.log(content);
+  return (
+    <Container>
+      {content.userName} {content.title} {content.statusTitle} na{" "}
+      {content.changedStatusTitle}
+    </Container>
+  );
 };
 
 export default Push;
