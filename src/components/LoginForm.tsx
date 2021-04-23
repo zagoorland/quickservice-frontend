@@ -17,10 +17,11 @@ const LoginForm = () => {
     e.preventDefault();
     signup(data.login, data.password);
   };
+  console.log(user?.email);
 
   return (
     <StyledContainer>
-      <form onSubmit={(e) => handleSubmit(e)}>
+      <form onSubmit={handleSubmit}>
         <input
           name="login"
           onChange={(e) => setData({ ...data, login: e.target.value })}

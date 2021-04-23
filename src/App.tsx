@@ -6,13 +6,14 @@ import Dashboard from "./Pages/Dashboard";
 import Home from "./Pages/Home";
 import Login from "./Pages/Login";
 import Signup from "./Pages/Signup";
+import PrivateRoute from "./Routes/PrivateRoute";
 
 function App() {
   return (
     <Router>
       <>
         <AuthProvider>
-          <Route exact path="/" component={Dashboard} />
+          <PrivateRoute path="/" component={Dashboard} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={Signup} />
         </AuthProvider>
