@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { AuthContext } from "../contexts/AuthContext";
 import { signup } from "../services/authMethods";
 import styled from "styled-components";
+import { useHistory } from "react-router-dom";
 
 const StyledContainer = styled.div`
   width: 100%;
@@ -13,11 +14,13 @@ const LoginForm = () => {
   const [data, setData] = useState({ login: "", password: "" });
   const user = useContext(AuthContext);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const history = useHistory();
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    signup(data.login, data.password);
+    const response = await signup(data.login, data.password);
+    response && history.push("/");
   };
-  console.log(user?.email);
 
   return (
     <StyledContainer>

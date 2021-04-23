@@ -1,9 +1,7 @@
 import React from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import SectionContainer from "./components/SectionContainer";
-import { AuthContext, AuthProvider } from "./contexts/AuthContext";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { AuthProvider } from "./contexts/AuthContext";
 import Dashboard from "./Pages/Dashboard";
-import Home from "./Pages/Home";
 import Login from "./Pages/Login";
 import Signup from "./Pages/Signup";
 import PrivateRoute from "./Routes/PrivateRoute";
@@ -11,13 +9,13 @@ import PrivateRoute from "./Routes/PrivateRoute";
 function App() {
   return (
     <Router>
-      <>
-        <AuthProvider>
-          <PrivateRoute path="/" component={Dashboard} />
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/signup" component={Signup} />
-        </AuthProvider>
-      </>
+      <AuthProvider>
+        <Switch>
+          <PrivateRoute exact path="/" component={Dashboard} />
+          <Route path="/login" component={Login} />
+          <Route path="/signup" component={Signup} />
+        </Switch>
+      </AuthProvider>
     </Router>
   );
 }

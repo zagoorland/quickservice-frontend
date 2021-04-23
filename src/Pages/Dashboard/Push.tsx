@@ -7,8 +7,12 @@ const Container = styled.div`
   border: 1px solid black;
 `;
 
-const Push = () => {
-  return <Container>push</Container>;
+interface IPush {
+  content: string;
+}
+
+const Push = ({ content }: IPush) => {
+  return <Container>{content}</Container>;
 };
 
 export default Push;

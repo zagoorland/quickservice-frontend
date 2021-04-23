@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { Redirect, Route, RouteProps } from "react-router";
+import { isConstTypeReference } from "typescript";
 import { AuthContext } from "../contexts/AuthContext";
 
 interface IPrivateRoute extends RouteProps {
@@ -8,6 +9,9 @@ interface IPrivateRoute extends RouteProps {
 
 const PrivateRoute = ({ component: Component, ...rest }: IPrivateRoute) => {
   const user = useContext(AuthContext);
+  console.log(user);
+  setTimeout(() => console.log(user), 1000);
+
   return (
     <div>
       <Route

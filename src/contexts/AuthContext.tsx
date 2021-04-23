@@ -19,7 +19,5 @@ export const AuthProvider: React.FC = ({ children }) => {
     return unsubscribe;
   }, []);
 
-  console.log(user);
-
   return <AuthContext.Provider value={user}>{children}</AuthContext.Provider>;
 };

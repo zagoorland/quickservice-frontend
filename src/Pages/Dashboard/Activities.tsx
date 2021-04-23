@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Push from "./Push";
+import firebase from "../../firebase";
 
 const Container = styled.div`
   display: flex;
@@ -21,11 +22,28 @@ const Notifications = styled.div`
 `;
 
 const Activities = () => {
+  const [nots, setNots] = useState([]);
+  const col = firebase.firestore().collection("employeeNotifications");
+
+  useEffect(() => {
+    const items: any = [];
+    col.onSnapshot((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        items.push(doc.data());
+      });
+    });
+    setNots(items);
+  }, []);
+
+  console.log(nots);
+
   return (
     <Container>
       <h2>Activity</h2>
       <Notifications>
-        <Push />
+        {nots.map((item) => (
+          <Push content="blank" />
+        ))}
       </Notifications>
     </Container>
   );
