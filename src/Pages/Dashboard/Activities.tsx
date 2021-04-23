@@ -18,7 +18,9 @@ const Container = styled.div`
 const Notifications = styled.div`
   margin-top: 50px;
   display: flex;
+  flex-direction: column;
   width: 100%;
+  overflow: scroll;
 `;
 
 const Activities = () => {
@@ -31,8 +33,9 @@ const Activities = () => {
       querySnapshot.forEach((doc) => {
         items.push(doc.data());
       });
+      console.log(items);
+      setNots(items);
     });
-    setNots(items);
   }, []);
 
   console.log(nots);
@@ -41,9 +44,7 @@ const Activities = () => {
     <Container>
       <h2>Activity</h2>
       <Notifications>
-        {nots.map((item) => (
-          <Push content="blank" />
-        ))}
+        {nots.length && nots.map((item) => <Push content={nots} />)}
       </Notifications>
     </Container>
   );
