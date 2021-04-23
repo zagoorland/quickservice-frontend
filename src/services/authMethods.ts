@@ -17,3 +17,7 @@ export const signup = (email: string, password: string) => {
       var errorMessage = error.message;
     });
 };
+
+export const signout = () => {
+  auth.signOut();
+};

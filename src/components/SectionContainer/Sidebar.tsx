@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import qs_logo from "../../assets/qs_logo.svg";
 import { MdDashboard } from "react-icons/md";
+import { BiLogOut } from "react-icons/bi";
+import { AuthContext } from "../../contexts/AuthContext";
+import { signout } from "../../services/authMethods";
 
 const Container = styled.nav`
   display: flex;
@@ -43,6 +46,8 @@ const MenuItem = styled.li`
 `;
 
 const Sidebar = () => {
+  const user = useContext(AuthContext);
+
   return (
     <Container>
       <Logo src={qs_logo} />
@@ -51,7 +56,7 @@ const Sidebar = () => {
           <MdDashboard size={30} />
         </MenuItem>
         <MenuItem>
-          <MdDashboard size={30} />
+          <BiLogOut size={30} onClick={() => signout()} />
         </MenuItem>
       </Menu>
     </Container>
