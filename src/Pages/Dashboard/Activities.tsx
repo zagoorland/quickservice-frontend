@@ -44,7 +44,7 @@ const Activities = () => {
     <Container>
       <h2>Activity</h2>
       <Notifications>
-        {nots.length && nots.map((item) => <Push content={nots} />)}
+        {nots.length && nots.map((item) => <Push content={item} />)}
       </Notifications>
     </Container>
   );
